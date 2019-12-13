@@ -1,4 +1,4 @@
-#!/bin/bash -x
+k#!/bin/bash -x
 
 echo "Welcome to Snake & Ladder "
 
@@ -7,9 +7,8 @@ endPosition=100
 diceCount=0
 dice=0
 
-declare -A positionDictionary
-
-
+function getPosition()
+{
 while [ $position -lt $endPosition ]
 do
 	diceRandom=$(($RANDOM%6 +1 ))
@@ -37,12 +36,12 @@ do
 				fi
 	positionDictionary[$dice]="$position"
 	dice=$(( $dice + 1 ))
+	echo "Position : " $position
+
 done
 
-
-for i in ${!positionDictionary[@]}
-do
-	echo "Dice $i : ${positionDictionary[$i]}"
-done | sort -k2 -n
-
+}
+getPosition
 echo "Number of time dice rolled : "$diceCount
+
+
