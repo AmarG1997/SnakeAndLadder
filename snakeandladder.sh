@@ -5,6 +5,11 @@ echo "Welcome to Snake & Ladder "
 position=0
 endPosition=100
 diceCount=0
+dice=0
+
+declare -A positionDictionary
+
+
 while [ $position -lt $endPosition ]
 do
 	diceRandom=$(($RANDOM%6 +1 ))
@@ -22,15 +27,22 @@ do
 			position=$(($position - $diceRandom))
 		;;
 	esac
+
 				if [ $position -lt 0 ]
 				then
 					position=0
 				elif [ $position -gt $endPosition ]
 				then
 					position=$(($postition-$diceRandom))
-				else
-					echo "Position " $position
 				fi
+	positionDictionary[$dice]="$position"
+	dice=$(( $dice + 1 ))
 done
 
-echo "Number of times the dice was played to win the game:- "$diceCount
+
+for i in ${!positionDictionary[@]}
+do
+	echo "Dice $i : ${positionDictionary[$i]}"
+done | sort -k2 -n
+
+echo "Number of time dice rolled : "$diceCount
