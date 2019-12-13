@@ -1,24 +1,36 @@
 #!/bin/bash -x
 
-echo "Welcome To The Snake And Ladder"
+echo "Welcome to Snake & Ladder "
 
 position=0
+endPosition=100
+diceCount=0
+while [ $position -lt $endPosition ]
+do
+	diceRandom=$(($RANDOM%6 +1 ))
+	((diceCount++))
+	option=$(($RANDOM%3))
 
-diceValue=$(((RANDOM%6)+1))
-optionValue=$((RANDOM%3))
-
-case $optionValue in
-	0)
-		position=$position
+	case $option in
+		0)
+			position=$position
 		;;
-	1)
-		position=$(($position+$diceValue))
+		1)
+			position=$(($position + $diceRandom))
 		;;
-	2)
-		position=$(($position-$diceValue))
-esac
+		2)
+			position=$(($position - $diceRandom))
+		;;
+	esac
+				if [ $position -lt 0 ]
+				then
+					position=0
+				elif [ $position -gt $endPosition ]
+				then
+					position=$(($postition-$diceRandom))
+				else
+					echo "Position " $position
+				fi
+done
 
-	if [ $position -lt 0 ]
-	then
-		position=0
-	fi
+echo "Number of times the dice was played to win the game:- "$diceCount
