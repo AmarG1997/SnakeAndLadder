@@ -17,3 +17,8 @@ case $optionValue in
 	2)
 		position=$(($position-$diceValue))
 esac
+
+	if [ $position -lt 0 ]
+	then
+		position=0
+	fi
