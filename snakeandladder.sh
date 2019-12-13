@@ -5,4 +5,15 @@ echo "Welcome To The Snake And Ladder"
 position=0
 
 diceValue=$(((RANDOM%6)+1))
-echo "diceValue"$diceValue
+optionValue=$((RANDOM%3))
+
+case $optionValue in
+	0)
+		position=$position
+		;;
+	1)
+		position=$(($position+$diceValue))
+		;;
+	2)
+		position=$(($position-$diceValue))
+esac
