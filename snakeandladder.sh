@@ -27,13 +27,15 @@ do
 		;;
 	esac
 
-				if [ $position -lt 0 ]
-				then
-					position=0
-				elif [ $position -gt $endPosition ]
-				then
-					position=$(($postition-$diceRandom))
-				fi
+	if [ $position -lt 0 ]
+	then
+		position=0
+	fi
+	if [ $position -gt $endPosition ]
+	then
+		position=$(($postition-$diceRandom))
+	fi
+
 	positionDictionary[$dice]="$position"
 	dice=$(( $dice + 1 ))
 	echo "Position : " $position
