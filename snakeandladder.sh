@@ -1,4 +1,4 @@
-k#!/bin/bash -x
+#!/bin/bash -x
 
 echo "Welcome to Snake & Ladder "
 
