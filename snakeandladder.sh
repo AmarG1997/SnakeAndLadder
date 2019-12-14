@@ -54,23 +54,23 @@ do
 		player1Position=$(getPosition $player1Position)
 		echo "player1 position : "$player1Position
 		flag=0
-				if [ $player1Position -eq $WINNING_POSITION ]
-				then
-					echo "$player1 win !!!"
-					exit
-				fi
+			if [ $player1Position -eq $WINNING_POSITION ]
+			then
+				echo "$player1 win !!!"
+				exit
+			fi
 	fi
 
 	if [ $flag -eq 0 ]
 	then
-			player2Position=$(getPosition $player2Position)
-			echo "player2 position : "$player2Position
-			flag=1
-				if [ $player2Position -eq $WINNING_POSITION ]
-					then
-							echo "$player2 win !!!!"
-					break;
-				fi
+		player2Position=$(getPosition $player2Position)
+		echo "player2 position : "$player2Position
+		flag=1
+			if [ $player2Position -eq $WINNING_POSITION ]
+			then
+				echo "$player2 win !!!!"
+				break;
+			fi
 	fi
 done
 }
