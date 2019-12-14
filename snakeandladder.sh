@@ -2,10 +2,13 @@
 
 echo "Welcome to Snake & Ladder "
 
+#Constant
+WINNING_POSITION=100
+
+#variable
 position=0
 player1Position=0
 player2Position=0
-winningPosition=100
 dice=0
 
 function getPosition()
@@ -31,7 +34,7 @@ function getPosition()
 		position=0
 	fi
 
-	if [ $position -gt $winningPosition ]
+	if [ $position -gt $WINNING_POSITION ]
 	then
 		position=$(($position-$diceRandom))
 	fi
@@ -43,7 +46,7 @@ flag=1
 
 function getWinner()
 {
-while [[ $player1Position -lt $winningPosition && $player2Position -lt $winningPosition ]]
+while [[ $player1Position -lt $WINNING_POSITION && $player2Position -lt $WINNING_POSITION ]]
 do
 	dice=$(( $dice + 1 ))
 	if [ $flag -eq 1 ]
@@ -51,7 +54,7 @@ do
 		player1Position=$(getPosition $player1Position)
 		echo "player1 position : "$player1Position
 		flag=0
-				if [ $player1Position -eq $winningPosition ]
+				if [ $player1Position -eq $WINNING_POSITION ]
 				then
 					echo "$player1 win !!!"
 					exit
@@ -63,7 +66,7 @@ do
 			player2Position=$(getPosition $player2Position)
 			echo "player2 position : "$player2Position
 			flag=1
-				if [ $player2Position -eq $winningPosition ]
+				if [ $player2Position -eq $WINNING_POSITION ]
 					then
 							echo "$player2 win !!!!"
 					break;
