@@ -77,9 +77,9 @@ done
 
 function main()
 {
-echo "Total Dice Rolled : "$dice
-read -p "Enter 1st Player Name : " player1
-read -p "Enter 2nd Player Name : " player2
-getWinner
+	echo "Total Dice Rolled : "$dice
+	read -p "Enter 1st Player Name : " player1
+	read -p "Enter 2nd Player Name : " player2
+	getWinner
 }
 main
