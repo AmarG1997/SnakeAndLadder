@@ -7,8 +7,6 @@ WINNING_POSITION=100
 
 #variable
 position=0
-player1Position=0
-player2Position=0
 dice=0
 
 function getPosition()
@@ -45,6 +43,8 @@ function getPosition()
 
 function getWinner()
 {
+	local player1Position=0
+	local player2Position=0
 	while [[ $player1Position -lt $WINNING_POSITION && $player2Position -lt $WINNING_POSITION ]]
 	do
 		dice=$(($dice+1))
@@ -55,9 +55,9 @@ function getWinner()
 	done
 	if [ $player2Position -eq $WINNING_POSITION ]
 	then
-		echo "player2 win"
+		echo "$player2 win"
 	else
-		echo "player1 win"
+		echo "$player1 win"
 	fi
 
 }
