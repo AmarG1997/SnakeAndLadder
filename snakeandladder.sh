@@ -43,40 +43,24 @@ function getPosition()
 	echo $position
 }
 
-
 function getWinner()
 {
-	nextPlayer=1
 	while [[ $player1Position -lt $WINNING_POSITION && $player2Position -lt $WINNING_POSITION ]]
 	do
-		dice=$(($dice + 1))
-		if [ $nextPlayer -eq 1 ]
-		then
-			player1Position=$(getPosition $player1Position)
-			echo "player1 position : "$player1Position
-			nextPlayer=0
-				if [ $player1Position -eq $WINNING_POSITION ]
-				then
-					echo "$player1 win !!!"
-					break
-				fi
-		fi
-
-		if [ $nextPlayer -eq 0 ]
-		then
-			player2Position=$(getPosition $player2Position)
-			echo "player2 position : "$player2Position
-			nextPlayer=1
-				if [ $player2Position -eq $WINNING_POSITION ]
-				then
-					echo "$player2 win !!!!"
-					break
-				fi
-		fi
+		dice=$(($dice+1))
+		player1Position=$(getPosition $player1Position )
+		echo "Player1 Position : "$player1Position
+		player2Position=$(getPosition $player2Position )
+		echo "Player2 Position : "$player2Position
 	done
+	if [ $player2Position -eq $WINNING_POSITION ]
+	then
+		echo "player2 win"
+	else
+		echo "player1 win"
+	fi
 
 }
-
 function main()
 {
 	read -p "Enter 1st Player Name : " player1
